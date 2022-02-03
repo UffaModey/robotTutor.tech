@@ -36,7 +36,7 @@ SECRET_KEY = os.getenv('SECRET_KEY',)
 #DEBUG = os.getenv('DEBUG', 'False') == 'True'
 DEBUG = True
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,robottutor.tech,www.robottutor.tech').split(',')
-ALLOWED_HOSTS = ['127.0.0.1','localhost','robottutor.tech','www.robottutor.tech','robottutor-tech-kf43v.ondigitalocean.app']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','robottutor.tech','www.robottutor.tech','robottutor.herokuapp.com/']
 
 # Application definition
 
