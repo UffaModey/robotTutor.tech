@@ -1,0 +1,12 @@
+django
+gunicorn==20.0.4
+psycopg2-binary==2.8.6
+whitenoise==5.2.0
+textX==2.3.0
+djangorestframework
+djangocodemirror==2.1.0
+pyserial==3.4
+django_heroku
+dj-database-url
+django-environ
+python-dotenv

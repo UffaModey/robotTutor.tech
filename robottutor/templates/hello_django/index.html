@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="Uffa Modey" content="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>robottutor.tech</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{%  static  'hello_django/assets/favicon.ico' %}" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- CSS only -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script> -->
+    <script src="{%  static  'hello_django/codemirror/lib/codemirror.js' %}"></script>
+    <link href="{%  static  'hello_django/codemirror/lib/codemirror.css' %}" rel="stylesheet" />
+    <script src="{%  static  'hello_django/codemirror/mode/xml/xml.js' %}"></script>
+    <link href="{%  static  'hello_django/codemirror/theme/dracula.css' %}" rel="stylesheet" />
+
+    <!-- Codemirror Editor -->
+
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="https://robottutor.tech/" style="font-family:courier; font-size: 25px; text-align: center">robottutor.tech</a>
+            <div class="navbar-brand" style=" text-align: center; font-size: 15px"> An online environment for programming with low-cost robots.</div>
+            <button class="btn btn-warning" onclick= "location.href='/'">Reset ></button>
+        </div>
+    </nav>
+    <!-- Page content-->
+    <div class="container">
+        <div class="p-3">
+            <form action="/" onsubmit="return validateForm()" method="POST">
+            {% csrf_token %}
+            <textarea id="editorcode" name="editorCode" >{{defaultEditorMessage}}&#13;&#10;{{code}}</textarea>
+
+            <div class="p-3">
+                <button type="submit" value="submit" class="btn btn-success" >Save Code></button>
+            </div>
+            <script>
+                var editor = CodeMirror.fromTextArea(document.getElementById('editorcode'), {
+                    lineNumbers: true,
+                    gutter: true,
+                    lineWrapping: true,
+                    theme: 'dracula',
+                    mode: 'xml',
+                });
+                editor.setSize(null, null);
+            </script>
+            <div class="p-2">
+                <p style=" font-size: 10px; color:red;">{{invalidpasscode}}{{invalidsyntax}}{{runcodeerror}}</p>
+                <p style=" font-size: 10px; color:blue;">{{codesaved}}{{coderunning}}</p>
+                <div class="form-group">
+                    <label for="passcodewebapp">GUI app passcode:</label>
+                    <input type="text" class="form-control" id="passcodewebapp" name="passcodewebapp" value="{{passcodeguiapplink}}">
+                </div>
+            </div>
+            </form>
+        </div>
+        <footer>
+            <div class="text-center">
+                <hr>
+                <p>© 2021 Developed by <a href="https://www.linkedin.com/in/uffa-modey-239a22128/">Uffa Modey</a>. Source code and user instructions at <a href="https://github.com/UffaModey/robottutor.tech">GitHub Repo</a>.</p>
+                <p>Supervisor  <a href="https://sshah.co.uk/">Dr. Madasar Shah</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js'></script>
+
+</body>
+
+</html>
