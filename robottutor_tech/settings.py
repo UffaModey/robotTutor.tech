@@ -24,7 +24,7 @@ from urllib.parse import urlparse
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #environment vairables
-dotenv_file = os.path.join(BASE_DIR, ".env")
+dotenv_file = os.path.join(BASE_DIR, "venv/lib/.env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
