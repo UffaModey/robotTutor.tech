@@ -18,6 +18,7 @@ import django_heroku
 import dj_database_url
 import dotenv
 
+
 from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
