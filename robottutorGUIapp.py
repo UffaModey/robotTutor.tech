@@ -7,24 +7,28 @@ import serial
 import psycopg2
 import random
 import os
+from pathlib import Path
+
+#build base paths
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+#environment vairables
+dotenv_file = os.path.join(BASE_DIR, "venv/lib/.env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 #Database credentials
-host = ''
-port = ''
-username = ''
-password = ''
-database = ''
+host = os.environ.get('DB_HOST')
+port = os.environ.get('DB_PORT')
+username = os.environ.get('DB_USERNAME')
+password = os.environ.get('DB_PASSWORD')
+database = os.environ.get('DATABASE')
 sslmode  = 'require'
 
 root = Tk()
 
 #connect to robottutor
 conn = psycopg2.connect(dbname=database, user=username, password=password, host=host, port=port)
-#conn = psycopg2.connect(password=os.environ.get('PASSWORD'),
-#                        dbname = os.environ.get('DATABASE'),
-#                       user=os.environ.get('USERNAME'),
-#                       host=os.environ.get('HOST'),
-#                       port=os.environ.get('PORT'))
 
 #create cursor for operating the Database
 c = conn.cursor()
@@ -93,7 +97,7 @@ statusLabel.pack(pady = 20)
 #put the gui passcode in the robottutor
 c.execute('''SELECT * FROM robottutor_program
                 ''')
-newDBid = c.rowcount + 3
+newDBid = c.rowcount #+ 3
 runid = 0
 
 insertQuery = '''INSERT INTO robottutor_program

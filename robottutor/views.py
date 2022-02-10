@@ -18,7 +18,7 @@ def home(request, passcodeguiapplink='Input passcode from GUI app'):
     if request.method == 'POST':
         code = request.POST.get('editorCode', None).strip()
         passcodeguiapplink = request.POST.get('passcodewebapp', None).strip()
-        num = Program.objects.count() + 2
+        num = Program.objects.count() # + 2
         codefordatabase = Program.objects.get(id=num)
         if passcodeguiapplink == codefordatabase.passcodeguiapp:
             try:
@@ -99,25 +99,25 @@ def home(request, passcodeguiapplink='Input passcode from GUI app'):
 
                 codesaved = "Code saved. Click //RUN CODE// on the GUI app."
 
-                return render (request, 'hello_django/index.html', {'codesaved':codesaved, 'code': code, 'passcodeguiapplink': passcodeguiapplink})
+                return render (request, 'robottutor/index.html', {'codesaved':codesaved, 'code': code, 'passcodeguiapplink': passcodeguiapplink})
                 
             except:
                 invalidsyntax = "Invalid syntax, parameter or no command sent."
-                return render(request, 'hello_django/index.html', { 'code': code,  'invalidsyntax':invalidsyntax, 'passcodeguiapplink': passcodeguiapplink} )
+                return render(request, 'robottutor/index.html', {'code': code, 'invalidsyntax':invalidsyntax, 'passcodeguiapplink': passcodeguiapplink})
   
         else:
 
             invalidpasscode = "Invalid passcode. Please put the correct passcode."
-            return render(request, 'hello_django/index.html', {'invalidpasscode':invalidpasscode, 'code': code, 'passcodeguiapplink': passcodeguiapplink,})
+            return render(request, 'robottutor/index.html', {'invalidpasscode':invalidpasscode, 'code': code, 'passcodeguiapplink': passcodeguiapplink, })
 
     else:
         
-        return render (request, 'hello_django/index.html', {'defaultEditorMessage':defaultEditorMessage, 'passcodeguiapplink': passcodeguiapplink} )
+        return render (request, 'robottutor/index.html', {'defaultEditorMessage':defaultEditorMessage, 'passcodeguiapplink': passcodeguiapplink})
 
 def run(request):
     
     if request.method == 'POST':
-        num = Program.objects.count() + 2
+        num = Program.objects.count() # + 2
         codefordatabase = Program.objects.get(id=num)
         passcodewebapp = request.POST.get('passcodewebapp', None).strip()
         code = request.POST.get('editorCode', None).strip()
@@ -130,11 +130,11 @@ def run(request):
             
                 ser.write(code.encode())
                 coderunning = 'Success! Code running on robot'
-                return render (request, 'hello_django/index.html', {'coderunning':coderunning, 'code': code, 'passcodewebapp': passcodewebapp,})
+                return render (request, 'robottutor/index.html', {'coderunning':coderunning, 'code': code, 'passcodewebapp': passcodewebapp, })
             except:
                 runcodeerror= "Unable to connect to port: "+robotport+ '. Robot is not connected.'
-                return render (request, 'hello_django/index.html', {'runcodeerror':runcodeerror, 'code': code, 'passcodewebapp': passcodewebapp,})
+                return render (request, 'robottutor/index.html', {'runcodeerror':runcodeerror, 'code': code, 'passcodewebapp': passcodewebapp, })
         else:
             runcodeerror = 'Robot is not connected or No code saved'
-            return render (request, 'hello_django/index.html', {'runcodeerror':runcodeerror, 'code': code, 'passcodewebapp': passcodewebapp,})
+            return render (request, 'robottutor/index.html', {'runcodeerror':runcodeerror, 'code': code, 'passcodewebapp': passcodewebapp, })
                 

@@ -40,7 +40,7 @@
     <!-- Page content-->
     <div class="container">
         <div class="p-3">
-            <form action="/" onsubmit="return validateForm()" method="POST">
+            <form action=" /" onsubmit="return validateForm()" method="POST">
             {% csrf_token %}
             <textarea id="editorcode" name="editorCode" >{{defaultEditorMessage}}&#13;&#10;{{code}}</textarea>
 
