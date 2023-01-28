@@ -24,3 +24,5 @@ robottutor.tech is a web application accessible from the user's web browser and 
 robottutor.tech application programming  https://youtu.be/4dxYRS2dRJ4
     
 robottutor.tech video demonstration  https://youtu.be/84sxuDH_Y4Y
+
+Read project dissertation https://drive.google.com/file/d/1RxvjdQXP2tmX3MRJXlxEpxBRMiPtsBRS/view?usp=sharing 
